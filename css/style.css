@@ -1,2 +1,7 @@
 /* font-family: 'Nanum Gothic', sans-serif;
 font-family: 'Nanum Myeongjo', serif; */
+
+.product-image {
+    height: 200px;
+    width: 300px;
+}
