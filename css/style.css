@@ -4,4 +4,13 @@ font-family: 'Nanum Myeongjo', serif; */
 .product-image {
     height: 200px;
     width: 300px;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-image {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
 }
