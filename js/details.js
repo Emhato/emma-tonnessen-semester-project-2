@@ -1,6 +1,14 @@
 import { urlBase } from "./urls/api.js";
 import { fetchCart } from "./utils/storage.js";
+import { jsMenu } from "./componetns/jsMenu.js";
+// import { cartIndication } from "./componetns/cartIndication.js"
 
+jsMenu();
+// cartIndication();
+
+// export const theCart = fetchCart();
+
+// cartIndication();
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
@@ -42,6 +50,8 @@ console.log(detailsUrl);
 
         addItem.addEventListener("click", addItemOnClick);
 
+        const cart = document.querySelector(".cart");
+
         function addItemOnClick() {
             const id = this.dataset.id;
             const title = this.dataset.title;
@@ -61,18 +71,25 @@ console.log(detailsUrl);
                 return exist.id === id;
             });
 
-            if(!existCheck) {
-                const article = {id, title, price, image};
+           
+            const article = {id, title, price, image};
 
-                theCart.push(article);
+            theCart.push(article);
     
-                saveCart(theCart);
-            } else {
-                const filteringCart = theCart.filter(function(exist) {
-                    return exist.id !== id;
-                });
-                saveCart(filteringCart);
-            }
+            saveCart(theCart);
+
+            //To indecate how many items are in the cart. Needs fixing
+            // if(theCart.length > 0) {
+            //     cart.innerHTML = `Cart (${theCart.length})`                
+            // }
+
+
+            
+            // const filteringCart = theCart.filter(function(exist) {
+            //     return exist.id !== id;
+            // });
+            // saveCart(filteringCart);
+            
         }
 
         function saveCart(cart) {
@@ -86,3 +103,19 @@ console.log(detailsUrl);
 
 
 })();
+
+
+console.log(theCart)
+
+// if(!existCheck) {
+//     const article = {id, title, price, image};
+
+//     theCart.push(article);
+
+//     saveCart(theCart);
+// } else {
+//     const filteringCart = theCart.filter(function(exist) {
+//         return exist.id !== id;
+//     });
+//     saveCart(filteringCart);
+// }

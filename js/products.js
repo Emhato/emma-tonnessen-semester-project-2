@@ -1,4 +1,7 @@
 import { urlBase } from "./urls/api.js";
+import { jsMenu } from "./componetns/jsMenu.js";
+
+jsMenu();
 
 const productsUrl = urlBase + "/products";
 

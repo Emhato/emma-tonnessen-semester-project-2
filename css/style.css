@@ -14,3 +14,10 @@ font-family: 'Nanum Myeongjo', serif; */
     background-position: center;
     background-size: cover;
 }
+
+.cart-image {
+    height: 200px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+}

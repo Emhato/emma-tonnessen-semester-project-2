@@ -1,4 +1,13 @@
+import { urlBase } from "./urls/api.js";
 import { fetchCart } from "./utils/storage.js";
+import { jsMenu } from "./componetns/jsMenu.js";
+
+jsMenu();
+// import { deleteButton } from "./componetns/deleteButton.js";
+
+// const deleteBtn = document.querySelector(".delete-btn");
+// deleteButton();
+
 
 const cart = fetchCart();
 
@@ -11,13 +20,17 @@ if(cart.length === 0) {
 }
 
 function createCart() {
+    let total = 0;
     cart.forEach(cartItem => {
+        total += parseFloat(cartItem.price)
         cartContainer.innerHTML += `<div>
+                                        <div class="cart-image" style="background-image: url('${cartItem.image}')"></div>
                                        <h3>${cartItem.title}</h3>
                                        <p>${cartItem.price}</p>
-                                    </div>`
+                                       <button class="delete-btn">Delete from cart</button>
+                                    </div>`;
         
-        totalContainer.innerHTML += ``
+        totalContainer.innerHTML = `Total: ${total}`;
     });
 }
 
