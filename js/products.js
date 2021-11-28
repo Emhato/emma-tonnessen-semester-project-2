@@ -20,7 +20,7 @@ const productsUrl = urlBase + "/products";
         productsContainer.innerHTML = "";
 
         for (let i = 0; i < json.length; i++) {
-            // console.log(json[i].title)
+
         // <div class="product-image" style="background-image: url('${urlBase + json[i].image.url}')"></div>
 
             productsContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">

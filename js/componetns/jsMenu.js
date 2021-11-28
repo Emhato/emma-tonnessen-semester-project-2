@@ -1,5 +1,6 @@
 // Needs fixing
 import { getUserName } from "../utils/storage.js";
+import logout from "./logout.js";
 
 export function jsMenu() {
     const userName = getUserName();
@@ -9,10 +10,12 @@ export function jsMenu() {
     if(userName) [
         adminMenu.innerHTML = `<div class="admin">
                                     <p>Admin</p>
-                                    <a href="index.html" class="login-off">Logoff</a>
+                                    <button class="logout">Logout</button>
                                     <a href="edit.html">Edit</a>
                                 </div>`
     ]
+
+    logout();
 }
 
 /* <div class="admin">

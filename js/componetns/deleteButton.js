@@ -1,39 +1,44 @@
-// export function deleteButton() {
-//     const deleteBtn = document.querySelector(".delete-btn");
-//     // const container = document.querySelector(".favorite-container");
-//     const cartContainer = document.querySelector(".items-container");
+import { urlBase } from "../urls/api.js";
+import { getToken } from "../utils/storage.js";
+
+export default function deleteButton(id) {
+    const deleteBtn = document.querySelector(".delete-btn");
+    // const messaging = document.querySelector(".message-container");
+
+    deleteBtn.addEventListener("click", onDelete);
+
+    async function onDelete() {
+        // console.log(id);
+
+        const confirmationCheck = confirm("Are you sure you want to delete this item?");
+
+        if(confirmationCheck) {
+            const deleteUrl = urlBase + "/products/" + id;
+
+            const token = getToken();
+
+            const options = {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+
+            try {
+                const response = await fetch(deleteUrl, options);
+                const json = await response.json();
+
+                location.href = "index.html";
+
+                console.log(json)
+            } catch (error) {
+                console.log(error);
+                // messaging.innerHTML = "upsidasy"
+            }
+        }
+    }
+}
 
 
-//     deleteBtn.addEventListener("click", deleteItem);
 
-//     function deleteItem() {
-//         console.log("yo")
-//         // const filteringCart = theCart.filter(function(exist) {
-//         //     return exist.id !== id;
-//         // });
-//         // saveCart(filteringCart);
-//     }
 
-//     // function deleteItem() {
-
-//     //     if(confirm("Do you want to delete the item from the cart?")) {
-//     //         localStorage.clear();
-
-//     //         container.innerHTML = "";
-//     //     }
-
-//     // }
-// }
-
-// if(!existCheck) {
-//     const article = {id, title, price, image};
-
-//     theCart.push(article);
-
-//     saveCart(theCart);
-// } else {
-//     const filteringCart = theCart.filter(function(exist) {
-//         return exist.id !== id;
-//     });
-//     saveCart(filteringCart);
-// }
