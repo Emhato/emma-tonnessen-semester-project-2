@@ -8,6 +8,8 @@ jsMenu();
 // const deleteBtn = document.querySelector(".delete-btn");
 // deleteButton();
 
+// To delete see js2 ma2
+
 
 const cart = fetchCart();
 

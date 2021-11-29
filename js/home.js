@@ -51,9 +51,9 @@ const heroUrl = urlBase + "/home";
             // console.log(json[i].image.url)
 
             if (json[i].featured) {
-            console.log(urlBase + json[i].image.url)
+            console.log(urlBase + json[i].image_url)
             featuredContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
-                                                <div class="product-image" style="background-image: url('${urlBase + json[i].image.url}')"></div>
+                                                <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
                                                 <h3>${json[i].title}</h3>
                                                 <p>${json[i].price}€</p>
                                             </a>`

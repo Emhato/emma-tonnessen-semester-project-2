@@ -1,5 +1,8 @@
 import { urlBase } from "./urls/api.js";
 import { saveToken, saveUser } from "./utils/storage.js";
+import { jsMenu } from "./componetns/jsMenu.js";
+
+jsMenu();
 
 const loginForm = document.querySelector(".login-form")
 const email = document.querySelector("#email");

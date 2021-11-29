@@ -6,12 +6,17 @@ import deleteButton from "./componetns/deleteButton.js"
 // import { cartIndication } from "./componetns/cartIndication.js"
 
 const token = getToken();
+const form = document.querySelector(".edit-product");
+
+// console.log(editForm)
 
 if (!token) {
-    location.href = "index.html";
+    form.style.display = "none";
 }
 
 jsMenu();
+
+// console.log(fetchCart)
 // cartIndication();
 
 // export const theCart = fetchCart();
@@ -46,11 +51,11 @@ console.log(detailsUrl);
         const detailsContainer = document.querySelector(".details-container");
 
         detailsContainer.innerHTML = `<div class="wrapper">
-                                        <div class="details-image" style="background-image: url('${urlBase + details.image.url}')"></div>
+                                        <div class="details-image" style="background-image: url('${details.image_url}')"></div>
                                         <h1>${details.title}</h1>
                                         <h4>${details.price}</h4>
                                         <p>${details.description}</p>
-                                        <button class="add-item" data-id="${details.id}" data-title="${details.title}" data-price="${details.price}" data-image="${urlBase + details.image.url}">Add Item</button>
+                                        <button class="add-item" data-id="${details.id}" data-title="${details.title}" data-price="${details.price}" data-image="${details.image_url}">Add Item</button>
                                     </div>`
 
         
@@ -58,9 +63,11 @@ console.log(detailsUrl);
 
         addItem.addEventListener("click", addItemOnClick);
 
-        const cart = document.querySelector(".cart");
+        // const cart = document.querySelector(".cart");
 
         function addItemOnClick() {
+            // jsMenu();
+
             const id = this.dataset.id;
             const title = this.dataset.title;
             const price = this.dataset.price;
@@ -85,6 +92,8 @@ console.log(detailsUrl);
             theCart.push(article);
     
             saveCart(theCart);
+
+            jsMenu();
 
             //To indecate how many items are in the cart. Needs fixing. Use getToken method?
             // if(theCart.length > 0) {
@@ -225,7 +234,7 @@ console.log(detailsUrl);
 
 const productUrl = urlBase + "/products/" + id;
 
-const form = document.querySelector(".edit-product");
+// const form = document.querySelector(".edit-product");
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -248,10 +257,11 @@ const message = document.querySelector(".message-container");
         console.log(details);
     } catch (error) {
         console.log(error);
-    } finally {
-        // loading.style.display = "none";
-        form.style.display = "block";
-    }
+    } 
+    // finally {
+    //     // loading.style.display = "none";
+    //     // form.style.display = "block";
+    // }
 })();
 
 form.addEventListener("submit", submitForm);

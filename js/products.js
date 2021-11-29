@@ -20,11 +20,18 @@ const productsUrl = urlBase + "/products";
         productsContainer.innerHTML = "";
 
         for (let i = 0; i < json.length; i++) {
+            console.log(json[i].image_url)
 
         // <div class="product-image" style="background-image: url('${urlBase + json[i].image.url}')"></div>
 
+            // productsContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
+            //                                     <div class="product-image" style="background-image: url('${urlBase + json[i].image.url}')"></div>
+            //                                     <h3>${json[i].title}</h3>
+            //                                     <p>${json[i].price}€</p>
+            //                                 </a>`
+
             productsContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
-                                                <div class="product-image" style="background-image: url('${urlBase + json[i].image.url}')"></div>
+                                                <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
                                                 <h3>${json[i].title}</h3>
                                                 <p>${json[i].price}€</p>
                                             </a>`

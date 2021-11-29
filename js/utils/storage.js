@@ -39,8 +39,12 @@ export function getUserName() {
     return null;
 }
 
+// export function clearStorage() {
+//     localStorage.clear();
+// }
+
 export function clearStorage() {
-    localStorage.clear();
+    tokenKey.clear();
 }
 
 function saveToStorage(key, value) {
