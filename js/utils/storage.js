@@ -43,8 +43,11 @@ export function getUserName() {
 //     localStorage.clear();
 // }
 
+// Kilde: https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/removeItem
+
 export function clearStorage() {
-    tokenKey.clear();
+    localStorage.removeItem(tokenKey);
+    localStorage.removeItem(userKey);
 }
 
 function saveToStorage(key, value) {

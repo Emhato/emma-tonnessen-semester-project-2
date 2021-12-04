@@ -13,10 +13,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav">
             <div class="container-fluid">
                 <!-- logo -->
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand nav__logo" href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="67.5" viewBox="0 0 40 67.5">
                     <g id="Group_5" data-name="Group 5" transform="translate(-24 -6.25)">
                       <text id="G" transform="translate(32 6.25) rotate(90)" fill="#204011" font-size="40" font-family="NanumMyeongjo"><tspan x="0" y="0">G</tspan></text>
@@ -26,19 +26,19 @@
                 </svg>                  
               </a>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              <button class="navbar-toggler nav__burger-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon nav__burger-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav__ul">
+                  <li class="nav-item nav__li">
+                    <a class="nav-link active nav__a nav__a--active" aria-current="page" href="index.html">Home</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="products.html">Shop</a>
+                  <li class="nav-item nav__li">
+                    <a class="nav-link nav__a" href="products.html">Shop</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link cart" href="cart.html">Cart</a>
+                  <li class="nav-item nav__li">
+                    <a class="nav-link cart nav__a" href="cart.html">Cart</a>
                   </li>
               </div>
             </div>
@@ -49,12 +49,12 @@
 
         <!-- Hero container -->
         <div class="hero-container">
-            <h1>Bring Life Into Your Home</h1>
+            <!-- <h1>Bring Life Into Your Home</h1>
             <p>Here at The Green Tree we have the perfect plant 
                 for you! Whether you are novice or an experienced 
                 plant lover.
             </p>
-            <a href="products.html">Have a look</a>
+            <a href="products.html">Have a look</a> -->
         </div>
 
         <h2>This week's favorites</h2>
@@ -64,20 +64,33 @@
         </div>
     </main>
 
-    <footer>
-        <div class="admin">
-            <p>Admin</p>
-            <a href="login.html">Login</a>
+    <footer class="footer">
+      <div class="footer__wrapper">
+        <div class="footer__admin">
+            <p class="footer__title">Admin</p>
+            <a class="footer__text" href="login.html">Login</a>
         </div>
 
-        <div class="Contact">
-            <p>Contact</p>
-            <p>thegreen@tree.com</p>
-            <p>12 34 56 78</p>
+        <div class="footer__Contact">
+            <p class="footer__title">Contact</p>
+            <p class="footer__text">thegreen@tree.com</p>
+            <p class="footer__text">12 34 56 78</p>
         </div>
 
+        <div class="footer__somed">
+            <p class="footer__title">Social media</p>
+            <a class="footer__text" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="footer__text" href="#"><i class="fab fa-twitter"></i></a>
+        </div>        
+
+        <div class="footer__bottom-nav">
+          <a class="footer__link" href="index.html">Home</a>
+          <a class="footer__link" href="products.html">Shop</a>
+          <a class="footer__link" href="cart.html">Cart</a>
+        </div>
+      </div>
         <!-- logo -->
-        <a href="index.html">
+        <a class="footer__logo" href="index.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="217" height="154.781" viewBox="0 0 217 154.781">
                 <g id="logo-big" transform="translate(0 0)">
                   <g id="Logo-small" transform="translate(67.5)">
@@ -92,17 +105,8 @@
             </svg>              
         </a>
 
-        <div class="somed">
-            <p>Social media</p>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
 
-        <div class="bottom-nav">
-            <a href="index.html">Home</a>
-            <a href="products.html">Shop</a>
-            <a href="cart.html">Cart</a>
-        </div>
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

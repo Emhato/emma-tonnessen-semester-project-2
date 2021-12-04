@@ -1,0 +1,9 @@
+p {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-family: $header-font;
+    color: getColor(logo-color);
+    font-size: 1.5rem;
+}

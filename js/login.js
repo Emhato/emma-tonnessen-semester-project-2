@@ -20,6 +20,10 @@ function validation(event) {
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
+    if (!emailValue || !passwordValue) {
+        return messaging.innerHTML = "Please fill out both e-mail/ username and password"
+    }
+
     login(emailValue, passwordValue);
 }
 
@@ -52,7 +56,7 @@ async function login(email, password) {
 
         if(json.error) {
             // replace with a message component
-            messaging.innerHTML ="error"
+            messaging.innerHTML = "Wrong E-mail/ username and/ or password"
         }
 
         // remove

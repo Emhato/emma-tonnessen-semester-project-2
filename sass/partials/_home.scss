@@ -1,0 +1,44 @@
+// images
+
+.product-image {
+    height: 200px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-image {
+    width: 100%;
+    height: 269px;
+    background-position: center;
+    background-size: cover;
+}
+
+// hero
+.home-header, .tagline, .cta {
+    margin-left: 10px;
+}
+
+.home-header {
+    color: getColor(buttons);
+    padding-top: 10px;
+}
+
+.tagline {
+    color: getColor(background);
+    font-size: 1rem;
+    width: 200px;
+    margin-bottom: 40px;
+}
+
+.cta {
+    background-color: getColor(buttons);
+    padding: 20px;
+    border-radius: 30px 10px 30px 10px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: $header-font;
+    box-shadow: getColor(buttons) 0 1px 30px;
+}
+
+

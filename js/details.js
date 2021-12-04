@@ -238,6 +238,8 @@ const productUrl = urlBase + "/products/" + id;
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
+const imageUrl = document.querySelector ("#image-url");
+const featured = document.querySelector("#featured");
 const idInput = document.querySelector("#id");
 const message = document.querySelector(".message-container");
 // const loading = document.querySelector(".loading");
@@ -250,6 +252,8 @@ const message = document.querySelector(".message-container");
         title.value = details.title;
         price.value = details.price;
         description.value = details.description;
+        imageUrl.value = details.image_url
+        featured.checked = details.featured
         idInput.value = details.id;
 
         deleteButton(details.id);
@@ -274,18 +278,20 @@ function submitForm(event) {
     const titleValue = title.value.trim();
     const priceValue = parseFloat(price.value);
     const descriptionValue = description.value.trim();
+    const imageUrlValue = imageUrl.value.trim();
+    const featuredValue = featured.checked;
     const idValue = idInput.value;
 
-    if (titleValue.length === 0 || isNaN(priceValue) || descriptionValue.length === 0) {
+    if (titleValue.length === 0 || isNaN(priceValue) || descriptionValue.length === 0 || !imageUrlValue) {
         return message.innerHTML = "supply info"
     }
 
-    updateProduct(titleValue, priceValue, descriptionValue, idValue);
+    updateProduct(titleValue, priceValue, descriptionValue, idValue, imageUrlValue, featuredValue);
 }
 
-async function updateProduct(title, price, description, id) {
+async function updateProduct(title, price, description, id, imageUrl, featured) {
     const url = urlBase + "/products/" + id;
-    const data = JSON.stringify({ title: title, price: price, description: description });
+    const data = JSON.stringify({ title: title, price: price, description: description, image_url: imageUrl, featured: featured });
 
     // const token = getToken();
 

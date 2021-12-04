@@ -20,7 +20,11 @@ const heroUrl = urlBase + "/home";
 
         console.log(json.hero_banner.url);
 
-        heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${urlBase + json.hero_banner.url}')"></div>`;
+        heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${urlBase + json.hero_banner.url}')">
+                                        <h1 class="home-header">Bring Life Into Your Home</h1>
+                                        <p class="tagline">Here at The Green Tree we have the perfect plant for you! Whether you are novice or an experienced plant lover.</p>
+                                        <a class="cta" href="products.html">Have a look</a>
+                                    </div>`;
 
 
     } catch(error) {
