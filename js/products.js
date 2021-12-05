@@ -70,7 +70,7 @@ const search = document.querySelector(".search");
                 productsContainer.innerHTML += `<a class="items" href="details.html?id=${jsonToRender[i].id}">
                                                     <div class="product-image" style="background-image: url('${jsonToRender[i].image_url}')"></div>
                                                     <h3>${jsonToRender[i].title}</h3>
-                                                    <p>${jsonToRender[i].price}€</p>
+                                                    <p class="product-price">${jsonToRender[i].price}€</p>
                                                 </a>`
             }            
         }

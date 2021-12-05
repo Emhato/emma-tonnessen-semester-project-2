@@ -1,10 +1,14 @@
 // images
 
 .product-image {
-    height: 200px;
-    width: 300px;
+    height: 230px;
+    width: 330px;
     background-position: center;
     background-size: cover;
+}
+
+.product-image:hover {
+    opacity: 50%;
 }
 
 .hero-image {
@@ -39,6 +43,54 @@
     color: #fff;
     font-family: $header-font;
     box-shadow: getColor(buttons) 0 1px 30px;
+}
+
+
+// Featured Items
+
+.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-price-container {
+    display: flex;
+    justify-content: space-between;
+    width: 330px;
+    margin-bottom: 40px;
+}
+
+.product-price {
+    font-family: $header-font;
+    color: getColor(dark);
+    font-size: 1rem;
+}
+
+@media only screen and (min-width: $desktop-widt) {
+    // Hero
+    .home-header, .tagline, .cta {
+        margin-left: 60px;
+    }
+
+    .home-header {
+        padding-top: 30px;
+    }
+
+    .tagline {
+        width: 350px;
+        margin-bottom: 50px;
+    }
+
+    .featured-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    // .items {
+    //     flex-direction: unset;
+    // }
+
 }
 
 

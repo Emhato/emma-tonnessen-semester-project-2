@@ -22,7 +22,7 @@ const heroUrl = urlBase + "/home";
 
         heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${urlBase + json.hero_banner.url}')">
                                         <h1 class="home-header">Bring Life Into Your Home</h1>
-                                        <p class="tagline">Here at The Green Tree we have the perfect plant for you! Whether you are novice or an experienced plant lover.</p>
+                                        <p class="tagline">Here at The Green Tree we have the perfect plant for you! Whether you are a novice or an experienced plant lover.</p>
                                         <a class="cta" href="products.html">Have a look</a>
                                     </div>`;
 
@@ -57,12 +57,17 @@ const heroUrl = urlBase + "/home";
             if (json[i].featured) {
             console.log(urlBase + json[i].image_url)
             featuredContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
-                                                <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
-                                                <h3>${json[i].title}</h3>
-                                                <p>${json[i].price}€</p>
+                                                <div class="featured-wrapper">
+                                                    <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
+                                                    <div class="title-price-container">
+                                                        <h3>${json[i].title}</h3>
+                                                        <p class="product-price">${json[i].price}€</p>
+                                                    </div>
+                                                </div>
                                             </a>`
             }
         }
+
         //         <img src="" alt="">
 
         //                                                 <div class="product-image" style="background-image: url('${json[i].image[0].url}')"></div>

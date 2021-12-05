@@ -3,6 +3,10 @@ html {
   height: 100%;
 }
 
+main {
+  min-height: 100%;
+}
+
 body {
   font-family: "Nanum Gothic", sans-serif;
   background-color: #DED9D6;
@@ -20,6 +24,21 @@ h1 {
   font-family: "Nanum Myeongjo", serif;
   color: #204011;
   font-size: 1.5rem;
+}
+
+h2 {
+  font-family: "Nanum Myeongjo", serif;
+  color: #204011;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-family: "Nanum Myeongjo", serif;
+  color: #000;
+  font-size: 1rem;
 }
 
 .nav {
@@ -98,11 +117,21 @@ h1 {
   margin-bottom: 10px;
 }
 
+@media only screen and (min-width: 1024px) {
+  .footer__wrapper {
+    margin: 30px;
+  }
+}
+
 .product-image {
-  height: 200px;
-  width: 300px;
+  height: 230px;
+  width: 330px;
   background-position: center;
   background-size: cover;
+}
+
+.product-image:hover {
+  opacity: 50%;
 }
 
 .hero-image {
@@ -137,5 +166,56 @@ h1 {
   font-family: "Nanum Myeongjo", serif;
   -webkit-box-shadow: #859D79 0 1px 30px;
           box-shadow: #859D79 0 1px 30px;
+}
+
+.items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title-price-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 330px;
+  margin-bottom: 40px;
+}
+
+.product-price {
+  font-family: "Nanum Myeongjo", serif;
+  color: #000;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .home-header, .tagline, .cta {
+    margin-left: 60px;
+  }
+  .home-header {
+    padding-top: 30px;
+  }
+  .tagline {
+    width: 350px;
+    margin-bottom: 50px;
+  }
+  .featured-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
 }
 /*# sourceMappingURL=style.css.map */
