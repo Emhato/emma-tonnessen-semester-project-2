@@ -43,6 +43,12 @@
     color: #fff;
     font-family: $header-font;
     box-shadow: getColor(buttons) 0 1px 30px;
+    transition: 0.5s;
+}
+
+.cta:hover {
+    color: getColor(background);
+    background-color: getColor(nav);
 }
 
 

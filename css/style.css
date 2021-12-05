@@ -48,7 +48,7 @@ h3 {
 
 .nav__a {
   font-family: "Nanum Myeongjo", serif;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: #000 !important;
 }
 
@@ -166,6 +166,13 @@ h3 {
   font-family: "Nanum Myeongjo", serif;
   -webkit-box-shadow: #859D79 0 1px 30px;
           box-shadow: #859D79 0 1px 30px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.cta:hover {
+  color: #DED9D6;
+  background-color: #CBA590;
 }
 
 .items {
