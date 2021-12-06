@@ -51,13 +51,11 @@ const heroUrl = urlBase + "/home";
         featuredContainer.innerHTML = "";
 
         for (let i = 0; i < json.length; i++) {
-            // console.log(json[i].title)
-            // console.log(json[i].image.url)
 
             if (json[i].featured) {
             console.log(urlBase + json[i].image_url)
             featuredContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
-                                                <div class="featured-wrapper">
+                                                <div class="products-wrapper">
                                                     <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
                                                     <div class="title-price-container">
                                                         <h3>${json[i].title}</h3>
@@ -67,10 +65,6 @@ const heroUrl = urlBase + "/home";
                                             </a>`
             }
         }
-
-        //         <img src="" alt="">
-
-        //                                                 <div class="product-image" style="background-image: url('${json[i].image[0].url}')"></div>
 
 
     } catch(error) {

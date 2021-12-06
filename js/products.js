@@ -64,13 +64,16 @@ const search = document.querySelector(".search");
         function renderProducts() {
             productsContainer.innerHTML = "";
 
-            for (let i = 0; i < json.length; i++) {
-                // console.log(json[i].image_url)
+            for (let i = 0; i < jsonToRender.length; i++) {
 
                 productsContainer.innerHTML += `<a class="items" href="details.html?id=${jsonToRender[i].id}">
-                                                    <div class="product-image" style="background-image: url('${jsonToRender[i].image_url}')"></div>
-                                                    <h3>${jsonToRender[i].title}</h3>
-                                                    <p class="product-price">${jsonToRender[i].price}€</p>
+                                                    <div class="products-wrapper">
+                                                        <div class="product-image" style="background-image: url('${jsonToRender[i].image_url}')"></div>
+                                                        <div class="title-price-container">
+                                                            <h3>${jsonToRender[i].title}</h3>
+                                                            <p class="product-price">${jsonToRender[i].price}€</p>
+                                                        </div>
+                                                    </div>
                                                 </a>`
             }            
         }

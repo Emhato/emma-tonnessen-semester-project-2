@@ -50,11 +50,11 @@ console.log(detailsUrl);
 
         const detailsContainer = document.querySelector(".details-container");
 
-        detailsContainer.innerHTML = `<div class="wrapper">
-                                        <div class="details-image" style="background-image: url('${details.image_url}')"></div>
+        detailsContainer.innerHTML = `<div class="details-wrapper">
                                         <h1>${details.title}</h1>
-                                        <h4>${details.price}</h4>
-                                        <p>${details.description}</p>
+                                        <div class="details-image" style="background-image: url('${details.image_url}')"></div>
+                                        <p class="product-price detail-price">${details.price}€</p>
+                                        <p class="product-description">${details.description}</p>
                                         <button class="add-item" data-id="${details.id}" data-title="${details.title}" data-price="${details.price}" data-image="${details.image_url}">Add Item</button>
                                     </div>`
 

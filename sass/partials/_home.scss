@@ -5,6 +5,7 @@
     width: 330px;
     background-position: center;
     background-size: cover;
+    border: solid 1px getColor(logo-color);
 }
 
 .product-image:hover {
@@ -43,7 +44,7 @@
     color: #fff;
     font-family: $header-font;
     box-shadow: getColor(buttons) 0 1px 30px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .cta:hover {
@@ -52,7 +53,7 @@
 }
 
 
-// Featured Items
+// Featured Items and products on products page
 
 .items {
     display: flex;
@@ -88,9 +89,14 @@
         margin-bottom: 50px;
     }
 
+    // products
+
     .featured-container {
+        margin: auto;
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 80%;
     }
 
     // .items {

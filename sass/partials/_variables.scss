@@ -16,3 +16,4 @@ $desktop-widt: 1024px;
 @function getColor($color) {
     @return map-get($map: $colors, $key: $color);
 }
+
