@@ -156,6 +156,66 @@ h3 {
   }
 }
 
+.edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit__input {
+  width: 80%;
+  height: 40px;
+  border: none;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 2px 1px 6px;
+          box-shadow: 2px 1px 6px;
+}
+
+.edit__checkbox {
+  height: 40px;
+  width: 40px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 0;
+}
+
+.edit__checkbox:checked {
+  color: #CBA590;
+}
+
+.edit__lable {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.3rem;
+}
+
+.edit__btn {
+  background-color: #859D79;
+  padding: 15px;
+  border: none;
+  border-radius: 30px 10px 30px 10px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Nanum Myeongjo", serif;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 60px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.edit__btn:hover {
+  color: #DED9D6;
+  background-color: #CBA590;
+}
+
 .product-image {
   height: 230px;
   width: 330px;
@@ -355,14 +415,51 @@ h3 {
   margin-top: 50px;
 }
 
+.image-wrapper {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.description-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .detail-price {
   margin-left: 270px;
 }
 
 .product-description {
   font-size: 1rem;
-  width: 90%;
+  width: 80%;
   margin-top: 30px;
   margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .details-wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 50px auto;
+    width: 80%;
+  }
+  .details-image {
+    height: 400px;
+    width: 600px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
