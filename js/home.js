@@ -1,5 +1,6 @@
 import { urlBase } from "./urls/api.js";
 import { jsMenu } from "./componetns/jsMenu.js";
+import messaging from "./componetns/messaging.js";
 // import { cartIndication } from "./componetns/cartIndication.js"
 
 jsMenu();
@@ -29,7 +30,8 @@ const heroUrl = urlBase + "/home";
 
     } catch(error) {
         console.log(error)
-        heroContainer.innerHTML = "error";
+        messaging("error", "There has been an error, sorry for the inconvinience!", ".hero-container");
+        // heroContainer.innerHTML = "error";
     }
 
 
@@ -69,7 +71,8 @@ const heroUrl = urlBase + "/home";
 
     } catch(error) {
         console.log(error)
-        featuredContainer.innerHTML = "error";
+        // featuredContainer.innerHTML = "error";
+        messaging("error", "There has been an error, sorry for the inconvinience!", ".featured-container");
     }
 
 

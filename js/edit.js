@@ -1,6 +1,7 @@
 import { jsMenu } from "./componetns/jsMenu.js";
 import { getToken } from "./utils/storage.js";
 import { urlBase } from "./urls/api.js";
+import messaging from "./componetns/messaging.js";
 
 const token = getToken();
 
@@ -16,14 +17,14 @@ const price = document.querySelector("#price");
 const description = document.querySelector("#description");
 const imageUrl = document.querySelector ("#image-url");
 const featured = document.querySelector("#featured");
-const messaging = document.querySelector(".message-container");
+const message = document.querySelector(".message-container");
 
 editForm.addEventListener("submit", formSubmition);
 
 function formSubmition(event) {
     event.preventDefault();
 
-    messaging.innerHTML = "";
+    message.innerHTML = "";
 
     const titleValue = title.value.trim();
     const priceValue = parseFloat(price.value);
@@ -34,7 +35,8 @@ function formSubmition(event) {
     console.log(featuredValue);
 
     if (!titleValue || !priceValue || !descriptionValue || !imageUrlValue) {
-        return messaging.innerHTML = "Please fill out all areas"
+        // return message.innerHTML = "Please fill out all areas"
+        return messaging("warning", "Please fill out all areas", ".message-container");
     }
 
     addItem(titleValue, priceValue, descriptionValue, imageUrlValue, featuredValue);
@@ -60,16 +62,19 @@ async function addItem(title, price, description, imageUrl, featured) {
         const json = await response.json();
 
         if(json.created_at) {
-            messaging.innerHTML = "product created";
+            messaging("success", "Product created", ".message-container");
+            // message.innerHTML = "product created";
             editForm.reset();
         }
 
         if(json.error) {
-            messaging.innerHTML = `${json.message}`;
+            messaging("error", `Error: ${json.message}`, ".message-container");
+            // message.innerHTML = `${json.message}`;
         }
 
         console.log(json);
     } catch (error) {
         console.log(error)
+        messaging("error", "Error", ".message-container");
     }
 }

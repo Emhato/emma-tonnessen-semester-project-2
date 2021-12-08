@@ -1,6 +1,7 @@
 import { urlBase } from "./urls/api.js";
 import { saveToken, saveUser } from "./utils/storage.js";
 import { jsMenu } from "./componetns/jsMenu.js";
+import messaging from "./componetns/messaging.js";
 
 jsMenu();
 
@@ -10,7 +11,7 @@ const emailLabel = document.querySelector(".email-label");
 const password = document.querySelector("#password");
 const passwordLabel = document.querySelector(".password-label");
 const loginBtn = document.querySelector(".login-Btn");
-const messaging = document.querySelector(".messaging");
+// const messaging = document.querySelector(".messaging");
 
 loginForm.addEventListener("submit", validation);
 
@@ -21,7 +22,8 @@ function validation(event) {
     const passwordValue = password.value.trim();
 
     if (!emailValue || !passwordValue) {
-        return messaging.innerHTML = "Please fill out both e-mail/ username and password"
+        // return messaging.innerHTML = "Please fill out both e-mail/ username and password"
+        return messaging("warning", "Please fill out both e-mail/ username and password", ".messaging");
     }
 
     login(emailValue, passwordValue);
@@ -46,8 +48,6 @@ async function login(email, password) {
         const json = await response.json();
 
         if(json.user) {
-            // replace with a message component
-            // messaging.innerHTML = "go to..."
             saveToken(json.jwt);
             saveUser(json.user);
 
@@ -55,14 +55,14 @@ async function login(email, password) {
         }
 
         if(json.error) {
-            // replace with a message component
-            messaging.innerHTML = "Wrong E-mail/ username and/ or password"
+            // messaging.innerHTML = "Wrong E-mail/ username and/ or password"
+            messaging("error", "Wrong E-mail/ username and/ or password", ".messaging");
         }
 
         // remove
         console.log(json)
     } catch(error) {
-        // add messaging
         console.log(error)
+        messaging("error", "There has been an error, sorry for the inconvinience!", ".messaging");
     }
 }

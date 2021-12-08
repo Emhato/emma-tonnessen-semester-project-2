@@ -11,12 +11,19 @@ export function jsMenu() {
     const cartIndicator = fetchCart()
     const cart = document.querySelector(".cart");
 
+    // <div class="footer__admin admin">
+    //     <p class="footer__title">Admin</p>
+    //     <a class="footer__text" href="login.html">Login</a>
+    // </div>
+
     console.log(cartIndicator);
     if(userName) {
-        adminMenu.innerHTML = `<div class="admin">
-                                    <p>Admin</p>
-                                    <button class="logout">Logout</button>
-                                    <a href="edit.html">Edit</a>
+        adminMenu.innerHTML = `<div class="footer__admin admin">
+                                    <p class="footer__title">Admin</p>
+                                    <div class="footer__admin-container">
+                                        <button class="logout">Logout</button>
+                                        <a class="edit-link" href="edit.html">Edit</a>
+                                    </div>
                                 </div>`
     }
 

@@ -3,6 +3,7 @@ import { fetchCart } from "./utils/storage.js";
 import { jsMenu } from "./componetns/jsMenu.js";
 import { getToken } from "./utils/storage.js";
 import deleteButton from "./componetns/deleteButton.js"
+import messaging from "./componetns/messaging.js";
 // import { cartIndication } from "./componetns/cartIndication.js"
 
 const token = getToken();
@@ -121,6 +122,8 @@ console.log(detailsUrl);
         
     } catch (error) {
         console.log(error)
+        messaging("error", "There have been an error, sorry for the inconvinience!", ".details-container");
+
     }
 
 
@@ -237,6 +240,9 @@ console.log(detailsUrl);
 // }
 
 
+
+// edit products
+
 const productUrl = urlBase + "/products/" + id;
 
 // const form = document.querySelector(".edit-product");
@@ -288,7 +294,8 @@ function submitForm(event) {
     const idValue = idInput.value;
 
     if (titleValue.length === 0 || isNaN(priceValue) || descriptionValue.length === 0 || !imageUrlValue) {
-        return message.innerHTML = "supply info"
+        // return message.innerHTML = "supply info"
+        return messaging("warning", "Supply info", ".message-container");
     }
 
     updateProduct(titleValue, priceValue, descriptionValue, idValue, imageUrlValue, featuredValue);
@@ -315,7 +322,10 @@ async function updateProduct(title, price, description, id, imageUrl, featured) 
         console.log(json);
 
         if (json.updated_at) {
-            message.innerHTML = "item updated";
+            // message.innerHTML = "item updated";
+            messaging("success", "Item updated", ".message-container");
+
+            
 
             // Hva er best? message eller relocation?
 
@@ -323,9 +333,11 @@ async function updateProduct(title, price, description, id, imageUrl, featured) 
         }
 
         if (json.error) {
-            message.innerHTML = "error"
+            // message.innerHTML = "error"
+            messaging("error", "There has been an error, sorry for the inconvinience!", ".message-container");
         }
     } catch (error) {
         console.log(error);
+        messaging("error", "There has been an error, sorry for the inconvinience!", ".message-container");
     }
 }

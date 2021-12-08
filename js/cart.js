@@ -1,6 +1,7 @@
-import { urlBase } from "./urls/api.js";
+// import { urlBase } from "./urls/api.js";
 import { fetchCart } from "./utils/storage.js";
 import { jsMenu } from "./componetns/jsMenu.js";
+import messaging from "./componetns/messaging.js";
 
 jsMenu();
 // import { deleteButton } from "./componetns/deleteButton.js";
@@ -18,7 +19,8 @@ const totalContainer = document.querySelector(".toltal-container");
 
 console.log(cart)
 if(cart.length === 0) {
-    cartContainer.innerHTML = "You have no items in your cart yet";
+    messaging("note", "You have no items in your cart yet", ".items-container");
+    // cartContainer.innerHTML = "You have no items in your cart yet";
 }
 
 function createCart() {
@@ -27,16 +29,21 @@ function createCart() {
         total += parseFloat(cartItem.price)
 
         console.log(cartItem.id)
-        cartContainer.innerHTML += `<li>
-                                        <span>
-                                            <div class="cart-image" style="background-image: url('${cartItem.image}')"></div>
-                                            <h3>${cartItem.title}</h3>
-                                            <p>${cartItem.price}</p>
-                                       </span>
-                                       <button class="delete-item" data-item="${cartItem.id}">Remove from cart</button>
-                                    </li>`;
+        cartContainer.innerHTML += `<div class="cart-container">
+                                        <li class="cart-list">
+                                            <span class="cart-span">
+                                                <h3>${cartItem.title}</h3>
+                                                <div class="cart-image" style="background-image: url('${cartItem.image}')"></div>
+                                                <div class="view-price-container">
+                                                    <a class="view-items" href="details.html?id=${cartItem.id}">View item</a>
+                                                    <p class="product-price">${cartItem.price}€</p>
+                                                </div>
+                                            </span>
+                                            <button class="delete-item" data-item="${cartItem.id}">Remove from cart</button>
+                                        </li>
+                                    </div>`;
         
-        totalContainer.innerHTML = `Total: ${total}`;
+        totalContainer.innerHTML = `<p class="total">Total: ${total}€</p>`;
     });
 
     const deleteBtn = document.querySelectorAll(".delete-item");

@@ -23,3 +23,7 @@ h3 {
     color: getColor(dark);
     font-size: 1rem;
 }
+
+a:hover {
+    color: getColor(background);
+}

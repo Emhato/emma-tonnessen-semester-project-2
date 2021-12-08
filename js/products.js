@@ -43,6 +43,7 @@
 
 import { urlBase } from "./urls/api.js";
 import { jsMenu } from "./componetns/jsMenu.js";
+import messaging from "./componetns/messaging.js";
 
 jsMenu();
 
@@ -84,7 +85,9 @@ const search = document.querySelector(".search");
             const searchValue = event.target.value.trim().toLowerCase();
 
             const filteredProducts = json.filter(function (product) {
-                if(product.title.toLowerCase().startsWith(searchValue)) {
+                console.log(product.description)
+                if(product.title.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue)) {
+                    console.log(product.title)
                     return true;
                 }
             });
@@ -102,8 +105,7 @@ const search = document.querySelector(".search");
 
     } catch(error) {
         console.log(error)
-        productsContainer.innerHTML = "error";
+        // productsContainer.innerHTML = "error";
+        messaging("error", "There has been an error, sorry for the inconvinience!", ".products-container");
     }
-
-
 })();
