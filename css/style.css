@@ -60,6 +60,11 @@ a:hover {
   color: #DED9D6 !important;
 }
 
+.nav__small {
+  background-color: #CBA590;
+  padding-left: 20px;
+}
+
 .nav__burger-icon {
   color: #204011 !important;
 }
@@ -153,6 +158,29 @@ a:hover {
   .footer__wrapper {
     margin: 30px;
   }
+}
+
+.note, .error, .warning, .success {
+  text-align: center;
+  border: solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+.note {
+  border-color: #859D79;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+
+.success {
+  border-color: #859D79;
 }
 
 .loader {

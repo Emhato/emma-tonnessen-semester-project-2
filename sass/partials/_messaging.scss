@@ -1,15 +1,23 @@
-.note {
+.note, .error, .warning, .success {
+    text-align: center;
+    // font-size: 1rem;
+    border: solid;
+    margin: 20px;
+    padding: 10px;
+}
 
+.note {
+    border-color: getColor(buttons);
 }
 
 .error {
-
+    border-color: red;
 }
 
 .warning {
-
+    border-color: yellow;
 }
 
 .success {
-    
+ border-color: getColor(buttons);
 }

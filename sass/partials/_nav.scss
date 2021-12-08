@@ -13,6 +13,11 @@
 
     }
     
+    &__small {
+        background-color: getColor(nav);
+        padding-left: 20px;
+    }
+
     // Fargen funker ikke! hvorfor?
 
     &__burger-icon {
