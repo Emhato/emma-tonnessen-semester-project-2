@@ -6,11 +6,15 @@ import messaging from "./componetns/messaging.js";
 jsMenu();
 
 
-const productsUrl = urlBase + "/products";
+const productsUrl = urlBase + "/api/plants";
 
-const heroUrl = urlBase + "/home";
+const heroUrl = urlBase + "/api/hero?populate=hero_banner";
+
+// const urlAltered = urlBase + "/"
 
 // Hero
+
+// https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654721258/hero_edit_1_c164a925b2.jpg
 
 (async function() {
     const heroContainer = document.querySelector(".hero-container");
@@ -18,10 +22,15 @@ const heroUrl = urlBase + "/home";
     try {
         const response = await fetch(heroUrl);
         const json = await response.json();
+        const content = json.data.attributes.hero_banner.data.attributes
 
-        console.log(json.hero_banner.url);
+        console.log(content);
 
-        heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${urlBase + json.hero_banner.url}')">
+        // https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654723552/hero_2_ec04b4bdcd.jpg
+
+        // <div class="hero-image" style="background-image: url('https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654723552/hero_2_ec04b4bdcd.jpg')">
+
+        heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${content.url}')">
                                         <h1 class="home-header">Bring Life Into Your Home</h1>
                                         <p class="tagline">Here at The Green Tree we have the perfect plant for you! Whether you are a novice or an experienced plant lover.</p>
                                         <a class="cta" href="products.html">Have a look</a>
@@ -47,24 +56,26 @@ const heroUrl = urlBase + "/home";
     try {
         const response = await fetch(productsUrl);
         const json = await response.json();
+        const plants = json.data
 
-        console.log(json)
+        console.log(plants)
 
         featuredContainer.innerHTML = "";
 
-        for (let i = 0; i < json.length; i++) {
+        for (let i = 0; i < plants.length; i++) {
+            console.log(plants[i].attributes.title)
 
-            if (json[i].featured) {
-            console.log(urlBase + json[i].image_url)
-            featuredContainer.innerHTML += `<a class="items" href="details.html?id=${json[i].id}">
-                                                <div class="products-wrapper">
-                                                    <div class="product-image" style="background-image: url('${json[i].image_url}')"></div>
-                                                    <div class="title-price-container">
-                                                        <h3>${json[i].title}</h3>
-                                                        <p class="product-price">${json[i].price}€</p>
+            if (plants[i].attributes.featured) {
+            // console.log(urlBase + json[i].image_url)
+                featuredContainer.innerHTML += `<a class="items" href="details.html?id=${plants[i].id}">
+                                                    <div class="products-wrapper">
+                                                        <div class="product-image" style="background-image: url('${plants[i].attributes.image_url}')"></div>
+                                                        <div class="title-price-container">
+                                                            <h3>${plants[i].attributes.title}</h3>
+                                                            <p class="product-price">${plants[i].attributes.price}€</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>`
+                                                </a>`
             }
         }
 

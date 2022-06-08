@@ -1,0 +1,10 @@
+.details-image {
+    height: 400px;
+    width: 500px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* .edit-product {
+    display: none;
+} */

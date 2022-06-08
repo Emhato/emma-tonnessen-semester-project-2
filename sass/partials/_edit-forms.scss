@@ -13,6 +13,10 @@
         box-shadow: 2px 1px 6px;
     }
 
+    &__textarea {
+        height: 200px;
+    }
+
 
     // Border and color doesn't work 
     &__checkbox {
@@ -52,6 +56,10 @@
         background-color: getColor(nav);
     }
 }
+
+// textarea {
+//     height: 200px;
+// }
 
 // .edit-product {
 //     display: flex;

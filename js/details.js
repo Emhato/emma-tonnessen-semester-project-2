@@ -36,7 +36,7 @@ if(!id) {
 }
 // 
 
-const detailsUrl = urlBase + "/products/" + id;
+const detailsUrl = urlBase + "/api/plants/" + id;
 
 // Remove when finished!
 console.log(detailsUrl);
@@ -46,20 +46,23 @@ console.log(detailsUrl);
     try {
         const response = await fetch(detailsUrl);
         const details = await response.json();
+        const plant = details.data
 
-        document.title = details.title + ", The Green Tree";
+        document.title = plant.attributes.title + ", The Green Tree";
 
         const detailsContainer = document.querySelector(".details-container");
 
+        console.log(plant.attributes.title)
+
         detailsContainer.innerHTML = `<div class="details-wrapper">
                                         <div class="image-wrapper">
-                                            <h1>${details.title}</h1>
-                                            <div class="details-image" style="background-image: url('${details.image_url}')"></div>
-                                            <p class="product-price detail-price">${details.price}€</p>
+                                            <h1>${plant.attributes.title}</h1>
+                                            <div class="details-image" style="background-image: url('${plant.attributes.image_url}')"></div>
+                                            <p class="product-price detail-price">${plant.attributes.price}€</p>
                                         </div>
                                         <div class="description-wrapper">
-                                            <p class="product-description">${details.description}</p>
-                                            <button class="add-item" data-id="${details.id}" data-title="${details.title}" data-price="${details.price}" data-image="${details.image_url}">Add Item</button>
+                                            <p class="product-description">${plant.attributes.description}</p>
+                                            <button class="add-item" data-id="${plant.id}" data-title="${plant.attributes.title}" data-price="${plant.attributes.price}" data-image="${plant.attributes.image_url}">Add Item</button>
                                         </div>
                                         
                                     </div>`
@@ -130,120 +133,12 @@ console.log(detailsUrl);
 })();
 
 
-// console.log(theCart)
-
-// if(!existCheck) {
-//     const article = {id, title, price, image};
-
-//     theCart.push(article);
-
-//     saveCart(theCart);
-// } else {
-//     const filteringCart = theCart.filter(function(exist) {
-//         return exist.id !== id;
-//     });
-//     saveCart(filteringCart);
-// }
-
 
 
 
 // edit products
 
-
-
-// const token = getToken();
-// const editProduct = document.querySelector(".edit-product");
-
-// console.log(token)
-
-// if(token) {
-//     editProduct.style.display = "block"
-// }
-
-// // const detailsUrl = urlBase + "/products/" + id;
-
-// const editProductForm = document.querySelector(".edit-product");
-// const title = document.querySelector("#title");
-// const price = document.querySelector("#price");
-// const description = document.querySelector("#description");
-// const featured = document.querySelector("#featured");
-// const productId = document.querySelector("#id");
-// const messaging = document.querySelector(".message-container");
-
-// (async function () {
-//     try{
-//         const response = await fetch(detailsUrl);
-//         const details = await response.json();
-
-//         title.value = details.title;
-//         price.value = details.price;
-//         description.value = details.description;
-//         productId.value = details.id;
-
-//         console.log(details);
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })();
-
-// editProductForm.addEventListener("submit", onSubmit);
-
-// function onSubmit(event) {
-//     event.preventDefault();
-
-//     messaging.innerHTML = "";
-
-//     const titleValue = title.value.trim();
-//     const priceValue = parseFloat(price.value);
-//     const descriptionValue = description.value.trim();
-//     const idValue = productId.value;
-
-//     if (!titleValue || !priceValue || !descriptionValue) {
-//         return messaging.innerHTML = "Please fill out all areas"
-//     }
-
-//     updateItem(titleValue, priceValue, descriptionValue, idValue);
-// }
-
-// async function updateItem(title, price, description, id) {
-//     const Url = urlBase + "/products/" + id;
-//     const data = JSON.stringify({ title: title, price: price, description: description});
-
-//     const thisToken = getToken()
-
-//     const options = {
-//         method: "PUT",
-//         body: data,
-//         headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${thisToken},`
-//         },
-//     };
-
-//     try {
-//         const response = await fetch(Url, options);
-//         const json = await response.json();
-//         console.log(json);
-
-//         if (json.updated_at) {
-//             messaging.innerHTML = "Item updated"
-//         }
-
-//         if (json.error) {
-//             messaging.innerHTML = json.message;
-//         }
-//     } catch (error){
-//         console.log(error)
-//     }
-
-// }
-
-
-
-// edit products
-
-const productUrl = urlBase + "/products/" + id;
+const productUrl = urlBase + "/api/plants/" + id;
 
 // const form = document.querySelector(".edit-product");
 const title = document.querySelector("#title");
@@ -258,13 +153,17 @@ const message = document.querySelector(".message-container");
 (async function () {
     try {
         const response = await fetch(productUrl);
-        const details = await response.json();
+        const rawData = await response.json();
+        const details = rawData.data
 
-        title.value = details.title;
-        price.value = details.price;
-        description.value = details.description;
-        imageUrl.value = details.image_url
-        featured.checked = details.featured
+
+        console.log(details)
+
+        title.value = details.attributes.title;
+        price.value = details.attributes.price;
+        description.value = details.attributes.description;
+        imageUrl.value = details.attributes.image_url
+        featured.checked = details.attributes.featured
         idInput.value = details.id;
 
         deleteButton(details.id);
@@ -302,14 +201,15 @@ function submitForm(event) {
 }
 
 async function updateProduct(title, price, description, id, imageUrl, featured) {
-    const url = urlBase + "/products/" + id;
-    const data = JSON.stringify({ title: title, price: price, description: description, image_url: imageUrl, featured: featured });
+    const url = urlBase + "/api/plants/" + id;
+    // const data = JSON.stringify({ title: title, price: price, description: description, image_url: imageUrl, featured: featured });
 
+    const data = {title: title, price: price, description: description, image_url: imageUrl, featured: featured};
     // const token = getToken();
 
     const options = {
         method: "PUT",
-        body: data,
+        body: JSON.stringify( {data: data}),
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

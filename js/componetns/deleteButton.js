@@ -13,7 +13,7 @@ export default function deleteButton(id) {
         const confirmationCheck = confirm("Are you sure you want to delete this item?");
 
         if(confirmationCheck) {
-            const deleteUrl = urlBase + "/products/" + id;
+            const deleteUrl = urlBase + "/api/plants/" + id;
 
             const token = getToken();
 

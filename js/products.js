@@ -47,7 +47,7 @@ import messaging from "./componetns/messaging.js";
 
 jsMenu();
 
-const productsUrl = urlBase + "/products";
+const productsUrl = urlBase + "/api/plants";
 const search = document.querySelector(".search");
 
 
@@ -57,10 +57,11 @@ const search = document.querySelector(".search");
     try {
         const response = await fetch(productsUrl);
         const json = await response.json();
+        const plants = json.data
 
         console.log(json)
 
-        let jsonToRender = json;
+        let jsonToRender = plants;
 
         function renderProducts() {
             productsContainer.innerHTML = "";
@@ -69,10 +70,10 @@ const search = document.querySelector(".search");
 
                 productsContainer.innerHTML += `<a class="items" href="details.html?id=${jsonToRender[i].id}">
                                                     <div class="products-wrapper">
-                                                        <div class="product-image" style="background-image: url('${jsonToRender[i].image_url}')"></div>
+                                                        <div class="product-image" style="background-image: url('${jsonToRender[i].attributes.image_url}')"></div>
                                                         <div class="title-price-container">
-                                                            <h3>${jsonToRender[i].title}</h3>
-                                                            <p class="product-price">${jsonToRender[i].price}€</p>
+                                                            <h3>${jsonToRender[i].attributes.title}</h3>
+                                                            <p class="product-price">${jsonToRender[i].attributes.price}€</p>
                                                         </div>
                                                     </div>
                                                 </a>`

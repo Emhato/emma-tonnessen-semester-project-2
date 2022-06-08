@@ -22,7 +22,7 @@ export function jsMenu() {
                                     <p class="footer__title">Admin</p>
                                     <div class="footer__admin-container">
                                         <button class="logout">Logout</button>
-                                        <a class="edit-link" href="edit.html">Edit</a>
+                                        <a class="edit-link" href="edit.html">Add</a>
                                     </div>
                                 </div>`
     }

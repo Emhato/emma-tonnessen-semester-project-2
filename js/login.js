@@ -30,7 +30,7 @@ function validation(event) {
 }
 
 async function login(email, password) {
-    const loginUrl = urlBase + "/auth/local";
+    const loginUrl = urlBase + "/api/auth/local";
 
     const data = JSON.stringify({identifier: email, password: password});
 
