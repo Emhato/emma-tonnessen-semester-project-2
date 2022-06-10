@@ -8,12 +8,6 @@ export function fetchCart() {
     }
 }
 
-// favorites = cart
-// favorite = cartItem
-
-
-// storage conected to the login. Reference all the following?
-
 const tokenKey = "token";
 const userKey = "user";
 
@@ -39,11 +33,7 @@ export function getUserName() {
     return null;
 }
 
-// export function clearStorage() {
-//     localStorage.clear();
-// }
-
-// Kilde: https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/removeItem
+// Source: https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/removeItem
 
 export function clearStorage() {
     localStorage.removeItem(tokenKey);

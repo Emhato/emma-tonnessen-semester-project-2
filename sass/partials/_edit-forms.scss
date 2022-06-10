@@ -17,8 +17,6 @@
         height: 200px;
     }
 
-
-    // Border and color doesn't work 
     &__checkbox {
         height: 40px;
         width: 40px;
@@ -45,7 +43,6 @@
         text-transform: uppercase;
         color: #fff;
         font-family: $header-font;
-        // box-shadow: getColor(buttons) 0 1px 30px;
         transition: 0.3s;
         margin-bottom: 60px;
         width: fit-content;
@@ -56,38 +53,3 @@
         background-color: getColor(nav);
     }
 }
-
-// textarea {
-//     height: 200px;
-// }
-
-// .edit-product {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-// }
-
-// .edit-input {
-//     width: 80%;
-// }
-
-// buttons
-
-// .edit-btn {
-//     background-color: getColor(buttons);
-//     padding: 15px;
-//     border: none;
-//     border-radius: 30px 10px 30px 10px;
-//     text-transform: uppercase;
-//     color: #fff;
-//     font-family: $header-font;
-//     // box-shadow: getColor(buttons) 0 1px 30px;
-//     transition: 0.3s;
-//     margin-bottom: 60px;
-//     width: fit-content;
-// }
-
-// .edit-btn:hover {
-//     color: getColor(background);
-//     background-color: getColor(nav);
-// }

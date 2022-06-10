@@ -3,13 +3,10 @@ import { getToken } from "../utils/storage.js";
 
 export default function deleteButton(id) {
     const deleteBtn = document.querySelector(".delete-btn");
-    // const messaging = document.querySelector(".message-container");
 
     deleteBtn.addEventListener("click", onDelete);
 
     async function onDelete() {
-        // console.log(id);
-
         const confirmationCheck = confirm("Are you sure you want to delete this item?");
 
         if(confirmationCheck) {
@@ -30,10 +27,8 @@ export default function deleteButton(id) {
 
                 location.href = "index.html";
 
-                console.log(json)
             } catch (error) {
                 console.log(error);
-                // messaging.innerHTML = "upsidasy"
             }
         }
     }

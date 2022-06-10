@@ -4,12 +4,9 @@ import { jsMenu } from "./componetns/jsMenu.js";
 import { getToken } from "./utils/storage.js";
 import deleteButton from "./componetns/deleteButton.js"
 import messaging from "./componetns/messaging.js";
-// import { cartIndication } from "./componetns/cartIndication.js"
 
 const token = getToken();
 const form = document.querySelector(".edit-product");
-
-// console.log(editForm)
 
 if (!token) {
     form.style.display = "none";
@@ -17,30 +14,17 @@ if (!token) {
 
 jsMenu();
 
-// console.log(fetchCart)
-// cartIndication();
-
-// export const theCart = fetchCart();
-
-// cartIndication();
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
-
-// Check what this means!
 if(!id) {
     document.location.href = "/";
 }
-// 
 
 const detailsUrl = urlBase + "/api/plants/" + id;
-
-// Remove when finished!
-console.log(detailsUrl);
-// 
 
 (async function() {
     try {
@@ -51,8 +35,6 @@ console.log(detailsUrl);
         document.title = plant.attributes.title + ", The Green Tree";
 
         const detailsContainer = document.querySelector(".details-container");
-
-        console.log(plant.attributes.title)
 
         detailsContainer.innerHTML = `<div class="details-wrapper">
                                         <div class="image-wrapper">
@@ -72,24 +54,13 @@ console.log(detailsUrl);
 
         addItem.addEventListener("click", addItemOnClick);
 
-        // const cart = document.querySelector(".cart");
-
         function addItemOnClick() {
-            // jsMenu();
-
             const id = this.dataset.id;
             const title = this.dataset.title;
             const price = this.dataset.price;
             const image = this.dataset.image;
 
-            // console.log(id)
-            // console.log(title)
-            // console.log(price)
-            // console.log(image)
-
             const theCart = fetchCart();
-
-            console.log(theCart)
 
             const existCheck = theCart.find(function(exist) {
                 return exist.id === id;
@@ -103,19 +74,6 @@ console.log(detailsUrl);
             saveCart(theCart);
 
             jsMenu();
-
-            //To indecate how many items are in the cart. Needs fixing. Use getToken method?
-            // if(theCart.length > 0) {
-            //     cart.innerHTML = `Cart (${theCart.length})`                
-            // }
-
-
-            
-            // const filteringCart = theCart.filter(function(exist) {
-            //     return exist.id !== id;
-            // });
-            // saveCart(filteringCart);
-            
         }
 
         function saveCart(cart) {
@@ -132,15 +90,8 @@ console.log(detailsUrl);
 
 })();
 
-
-
-
-
-// edit products
-
 const productUrl = urlBase + "/api/plants/" + id;
 
-// const form = document.querySelector(".edit-product");
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -148,16 +99,12 @@ const imageUrl = document.querySelector ("#image-url");
 const featured = document.querySelector("#featured");
 const idInput = document.querySelector("#id");
 const message = document.querySelector(".message-container");
-// const loading = document.querySelector(".loading");
 
 (async function () {
     try {
         const response = await fetch(productUrl);
         const rawData = await response.json();
         const details = rawData.data
-
-
-        console.log(details)
 
         title.value = details.attributes.title;
         price.value = details.attributes.price;
@@ -167,15 +114,9 @@ const message = document.querySelector(".message-container");
         idInput.value = details.id;
 
         deleteButton(details.id);
-
-        console.log(details);
     } catch (error) {
         console.log(error);
     } 
-    // finally {
-    //     // loading.style.display = "none";
-    //     // form.style.display = "block";
-    // }
 })();
 
 form.addEventListener("submit", submitForm);
@@ -193,7 +134,6 @@ function submitForm(event) {
     const idValue = idInput.value;
 
     if (titleValue.length === 0 || isNaN(priceValue) || descriptionValue.length === 0 || !imageUrlValue) {
-        // return message.innerHTML = "supply info"
         return messaging("warning", "Supply info", ".message-container");
     }
 
@@ -202,10 +142,8 @@ function submitForm(event) {
 
 async function updateProduct(title, price, description, id, imageUrl, featured) {
     const url = urlBase + "/api/plants/" + id;
-    // const data = JSON.stringify({ title: title, price: price, description: description, image_url: imageUrl, featured: featured });
 
     const data = {title: title, price: price, description: description, image_url: imageUrl, featured: featured};
-    // const token = getToken();
 
     const options = {
         method: "PUT",
@@ -219,21 +157,12 @@ async function updateProduct(title, price, description, id, imageUrl, featured) 
     try {
         const response = await fetch(url, options);
         const json = await response.json();
-        console.log(json);
 
         if (json.updated_at) {
-            // message.innerHTML = "item updated";
             messaging("success", "Item updated", ".message-container");
-
-            
-
-            // Hva er best? message eller relocation?
-
-            // location.href = "products.html";
         }
 
         if (json.error) {
-            // message.innerHTML = "error"
             messaging("error", "There has been an error, sorry for the inconvinience!", ".message-container");
         }
     } catch (error) {

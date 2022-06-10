@@ -11,7 +11,6 @@ const emailLabel = document.querySelector(".email-label");
 const password = document.querySelector("#password");
 const passwordLabel = document.querySelector(".password-label");
 const loginBtn = document.querySelector(".login-Btn");
-// const messaging = document.querySelector(".messaging");
 
 loginForm.addEventListener("submit", validation);
 
@@ -22,7 +21,6 @@ function validation(event) {
     const passwordValue = password.value.trim();
 
     if (!emailValue || !passwordValue) {
-        // return messaging.innerHTML = "Please fill out both e-mail/ username and password"
         return messaging("warning", "Please fill out both e-mail/ username and password", ".messaging");
     }
 
@@ -37,7 +35,6 @@ async function login(email, password) {
     const options = {
         method: "POST",
         body: data,
-        // / infront of application? small C in Content?
         headers: {
             "Content-type": "application/json",
         },
@@ -55,12 +52,8 @@ async function login(email, password) {
         }
 
         if(json.error) {
-            // messaging.innerHTML = "Wrong E-mail/ username and/ or password"
             messaging("error", "Wrong E-mail/ username and/ or password", ".messaging");
         }
-
-        // remove
-        console.log(json)
     } catch(error) {
         console.log(error)
         messaging("error", "There has been an error, sorry for the inconvinience!", ".messaging");

@@ -1,7 +1,6 @@
 import { urlBase } from "./urls/api.js";
 import { jsMenu } from "./componetns/jsMenu.js";
 import messaging from "./componetns/messaging.js";
-// import { cartIndication } from "./componetns/cartIndication.js"
 
 jsMenu();
 
@@ -10,12 +9,6 @@ const productsUrl = urlBase + "/api/plants";
 
 const heroUrl = urlBase + "/api/hero?populate=hero_banner";
 
-// const urlAltered = urlBase + "/"
-
-// Hero
-
-// https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654721258/hero_edit_1_c164a925b2.jpg
-
 (async function() {
     const heroContainer = document.querySelector(".hero-container");
 
@@ -23,12 +16,6 @@ const heroUrl = urlBase + "/api/hero?populate=hero_banner";
         const response = await fetch(heroUrl);
         const json = await response.json();
         const content = json.data.attributes.hero_banner.data.attributes
-
-        console.log(content);
-
-        // https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654723552/hero_2_ec04b4bdcd.jpg
-
-        // <div class="hero-image" style="background-image: url('https://res.cloudinary.com/dcvnkbxlu/image/upload/v1654723552/hero_2_ec04b4bdcd.jpg')">
 
         heroContainer.innerHTML += `<div class="hero-image" style="background-image: url('${content.url}')">
                                         <h1 class="home-header">Bring Life Into Your Home</h1>
@@ -40,13 +27,8 @@ const heroUrl = urlBase + "/api/hero?populate=hero_banner";
     } catch(error) {
         console.log(error)
         messaging("error", "There has been an error, sorry for the inconvinience!", ".hero-container");
-        // heroContainer.innerHTML = "error";
     }
-
-
 })();
-
-
 
 // featured
 
@@ -58,15 +40,12 @@ const heroUrl = urlBase + "/api/hero?populate=hero_banner";
         const json = await response.json();
         const plants = json.data
 
-        console.log(plants)
-
         featuredContainer.innerHTML = "";
 
         for (let i = 0; i < plants.length; i++) {
             console.log(plants[i].attributes.title)
 
             if (plants[i].attributes.featured) {
-            // console.log(urlBase + json[i].image_url)
                 featuredContainer.innerHTML += `<a class="items" href="details.html?id=${plants[i].id}">
                                                     <div class="products-wrapper">
                                                         <div class="product-image" style="background-image: url('${plants[i].attributes.image_url}')"></div>
@@ -82,9 +61,6 @@ const heroUrl = urlBase + "/api/hero?populate=hero_banner";
 
     } catch(error) {
         console.log(error)
-        // featuredContainer.innerHTML = "error";
         messaging("error", "There has been an error, sorry for the inconvinience!", ".featured-container");
     }
-
-
 })();
