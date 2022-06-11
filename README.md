@@ -1,6 +1,6 @@
 # The Green Tree
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![The green tree](/images/green-tree-home-desktop.JPG)
 
 The green Tree is a website for selling green plants, that I made as my third term semester project at Noroff. 
 
@@ -43,7 +43,7 @@ Make sure you're watching the Sass, and open with your live server. Simple as th
 ## Contact
 
 [LinkedIn](https://www.linkedin.com/in/emma-tonnessen/)
-[MyWebsite](https://emmatonnessen.com)
+[My Website](https://emmatonnessen.com)
 
 ## Acknowledgments
 
